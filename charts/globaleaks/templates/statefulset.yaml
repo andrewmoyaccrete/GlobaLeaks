@@ -5,6 +5,7 @@ metadata:
   labels:
     {{- include "globaleaks.labels" . | nindent 4 }}
 spec:
+  serviceName: "globaleaks"
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
