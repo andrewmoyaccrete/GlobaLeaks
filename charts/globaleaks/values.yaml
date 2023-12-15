@@ -25,6 +25,8 @@ serviceAccount:
 
 podAnnotations: {}
 
+nonce: {}
+
 podSecurityContext: {}
   # fsGroup: 2000
 
