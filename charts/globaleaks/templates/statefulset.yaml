@@ -41,7 +41,7 @@ spec:
               containerPort: {{ .Values.service.port }}
               protocol: TCP
             - name: https
-            containerPort: {{.Values.service.httpsPort}}
+              containerPort: {{.Values.service.httpsPort}}
             {{- if .Values.startupProbe.enabled }}
             startupProbe:
               httpGet:
