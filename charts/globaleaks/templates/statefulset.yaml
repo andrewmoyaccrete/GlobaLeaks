@@ -37,46 +37,46 @@ spec:
           - name: globaleaks-pvc
             mountPath: /var/globaleaks/
           ports:
-            - name: http
-              containerPort: {{ .Values.service.port }}
-              protocol: TCP
-            - name: https
-              containerPort: {{.Values.service.httpsPort}}
-            {{- if .Values.startupProbe.enabled }}
-            startupProbe:
-              httpGet:
-                path: {{ .Values.startupProbe.path }}
-                scheme: {{ .Values.startupProbe.scheme | upper }}
-                port: {{ .Values.internalPort }}
-              initialDelaySeconds: {{ .Values.startupProbe.initialDelaySeconds }}
-              periodSeconds: {{ .Values.startupProbe.periodSeconds }}
-              failureThreshold: {{ .Values.startupProbe.failureThreshold }}
-              timeoutSeconds: {{ .Values.startupProbe.timeoutSeconds }}
-            {{- end }}
-            {{- if .Values.readinessProbe.enabled }}
-            readinessProbe:
-              httpGet:
-                path: {{ .Values.readinessProbe.path }}
-                scheme: {{ .Values.startupProbe.scheme | upper }}
-                port: {{ .Values.internalPort }}
-              initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
-              periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
-              timeoutSeconds: {{ .Values.readinessProbe.timeoutSeconds }}
-              failureThreshold: {{ .Values.readinessProbe.failureThreshold }}
-              successThreshold: {{ .Values.readinessProbe.successThreshold }}
-            {{- end }}
-            {{- if .Values.livenessProbe.enabled }}
-            livenessProbe:
-              httpGet:
-                path: {{ .Values.livenessProbe.path }}
-                scheme: {{ .Values.startupProbe.scheme | upper }}
-                port: {{ .Values.internalPort }}
-              initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
-              periodSeconds: {{ .Values.livenessProbe.periodSeconds }}
-              timeoutSeconds: {{ .Values.livenessProbe.timeoutSeconds }}
-              failureThreshold: {{ .Values.livenessProbe.failureThreshold }}
-              successThreshold: {{ .Values.livenessProbe.successThreshold }}
-            {{- end }}
+          - name: http
+            containerPort: {{ .Values.service.port }}
+            protocol: TCP
+          - name: https
+            containerPort: {{.Values.service.httpsPort}}
+          {{- if .Values.startupProbe.enabled }}
+          startupProbe:
+            httpGet:
+              path: {{ .Values.startupProbe.path }}
+              scheme: {{ .Values.startupProbe.scheme | upper }}
+              port: {{ .Values.internalPort }}
+            initialDelaySeconds: {{ .Values.startupProbe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.startupProbe.periodSeconds }}
+            failureThreshold: {{ .Values.startupProbe.failureThreshold }}
+            timeoutSeconds: {{ .Values.startupProbe.timeoutSeconds }}
+          {{- end }}
+          {{- if .Values.readinessProbe.enabled }}
+          readinessProbe:
+            httpGet:
+              path: {{ .Values.readinessProbe.path }}
+              scheme: {{ .Values.startupProbe.scheme | upper }}
+              port: {{ .Values.internalPort }}
+            initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
+            timeoutSeconds: {{ .Values.readinessProbe.timeoutSeconds }}
+            failureThreshold: {{ .Values.readinessProbe.failureThreshold }}
+            successThreshold: {{ .Values.readinessProbe.successThreshold }}
+          {{- end }}
+          {{- if .Values.livenessProbe.enabled }}
+          livenessProbe:
+            httpGet:
+              path: {{ .Values.livenessProbe.path }}
+              scheme: {{ .Values.startupProbe.scheme | upper }}
+              port: {{ .Values.internalPort }}
+            initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.livenessProbe.periodSeconds }}
+            timeoutSeconds: {{ .Values.livenessProbe.timeoutSeconds }}
+            failureThreshold: {{ .Values.livenessProbe.failureThreshold }}
+            successThreshold: {{ .Values.livenessProbe.successThreshold }}
+          {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
