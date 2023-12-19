@@ -27,8 +27,8 @@ podAnnotations: {}
 
 nonce: {}
 
-podSecurityContext: {}
-  # fsGroup: 2000
+podSecurityContext: 
+  fsGroup: 102
 
 securityContext: {}
   # capabilities:

@@ -28,6 +28,7 @@ spec:
       serviceAccountName: {{ include "globaleaks.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+        fsGroup: 102
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
