@@ -44,16 +44,16 @@ service:
   httpsPort: 8443
 
 ingress:
-    enabled: true
-    className: alb
-    paths: [/]
-    pathType: Prefix
-    hosts: [globaleaks.ue2.mgt.aws.accrete.sh]
-    annotations:
-      external-dns.alpha.kubernetes.io/hostname: globaleaks.ue2.mgt.aws.accrete.sh,
-        *.globaleaks.ue2.mgt.aws.accrete.sh
-      alb.ingress.kubernetes.io/group.name: platform
-      alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
+  enabled: true
+  className: alb
+  paths: [/]
+  pathType: Prefix
+  hosts: [globaleaks.ue2.mgt.aws.accrete.sh]
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: globaleaks.ue2.mgt.aws.accrete.sh,
+      *.globaleaks.ue2.mgt.aws.accrete.sh
+    alb.ingress.kubernetes.io/group.name: platform
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
 
 # ingress:
 #   enabled: true
