@@ -44,22 +44,34 @@ service:
   httpsPort: 8443
 
 ingress:
-  enabled: true
-  className: "alb"
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: globaleaks.ue2.mgt.aws.accrete.sh,
-      *.globaleaks.ue2.mgt.aws.accrete.sh
-    alb.ingress.kubernetes.io/group.name: platform
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
-  hosts:
-    - host: globaleaks.ue2.mgt.aws.accrete.sh
-      paths:
-        - path: /
-          pathType: ImplementationSpecific
-  tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
+    enabled: true
+    className: alb
+    paths: [/]
+    pathType: Prefix
+    hosts: [globaleaks.ue2.mgt.aws.accrete.sh]
+    annotations:
+      external-dns.alpha.kubernetes.io/hostname: globaleaks.ue2.mgt.aws.accrete.sh,
+        *.globaleaks.ue2.mgt.aws.accrete.sh
+      alb.ingress.kubernetes.io/group.name: platform
+      alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
+
+# ingress:
+#   enabled: true
+#   className: "alb"
+#   annotations:
+#     external-dns.alpha.kubernetes.io/hostname: globaleaks.ue2.mgt.aws.accrete.sh,
+#       *.globaleaks.ue2.mgt.aws.accrete.sh
+#     alb.ingress.kubernetes.io/group.name: platform
+#     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
+#   hosts:
+#     - host: globaleaks.ue2.mgt.aws.accrete.sh
+#       paths:
+#         - path: /
+#           pathType: Prefix
+#   tls: []
+#   #  - secretName: chart-example-tls
+#   #    hosts:
+#   #      - chart-example.local
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
