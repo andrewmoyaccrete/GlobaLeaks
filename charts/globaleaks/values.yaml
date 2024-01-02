@@ -46,9 +46,9 @@ service:
 ingress:
   enabled: true
   className: alb
-  paths: [/]
+  paths: /
   pathType: Prefix
-  host: [globaleaks.ue2.mgt.aws.accrete.sh]
+  host: globaleaks.ue2.mgt.aws.accrete.sh
   annotations:
     external-dns.alpha.kubernetes.io/hostname: globaleaks.ue2.mgt.aws.accrete.sh,
       *.globaleaks.ue2.mgt.aws.accrete.sh
