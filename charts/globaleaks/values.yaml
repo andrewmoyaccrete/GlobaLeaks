@@ -40,8 +40,7 @@ securityContext: {}
 
 service:
   type: NodePort
-  port: 8080
-  httpsPort: 8443
+  port: 8443
 
 # ingress:
 #   enabled: true
@@ -62,7 +61,7 @@ ingress:
     external-dns.alpha.kubernetes.io/hostname: globaleaks.ue2.mgt.aws.accrete.sh,
       *.globaleaks.ue2.mgt.aws.accrete.sh
     alb.ingress.kubernetes.io/group.name: platform
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
   hosts:
     - host: globaleaks.ue2.mgt.aws.accrete.sh
       paths:
