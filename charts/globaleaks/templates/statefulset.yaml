@@ -39,7 +39,7 @@ spec:
             mountPath: /var/globaleaks/
           ports:
           - name: http
-            containerPort: {{ .Values.service.port }}
+            containerPort: {{ .Values.container.port }}
             protocol: TCP
           {{- if .Values.startupProbe.enabled }}
           startupProbe:

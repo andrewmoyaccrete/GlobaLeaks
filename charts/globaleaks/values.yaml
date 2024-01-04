@@ -39,9 +39,11 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: NodePort
-  port: 8443
+  type: ClusterIP
+  port: 443
 
+container:
+  port: 8443
 # ingress:
 #   enabled: true
 #   className: alb
@@ -58,10 +60,13 @@ ingress:
   enabled: true
   className: "alb"
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: globaleaks.ue2.mgt.aws.accrete.sh, *.globaleaks.ue2.mgt.aws.accrete.sh
+    external-dns.alpha.kubernetes.io/hostname: globaleaks.ue2.mgt.aws.accrete.sh
     alb.ingress.kubernetes.io/group.name: platform
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
     alb.ingress.kubernetes.io/healthcheck-path: /#
+    alb.ingress.kubernetes.io/backend-protocol: HTTPS
+    alb.ingress.kubernetes.io/healthcheck-protocol: HTTPS
+    alb.ingress.kubernetes.io/target-type: ip
   hosts:
     - host: globaleaks.ue2.mgt.aws.accrete.sh
       paths:
