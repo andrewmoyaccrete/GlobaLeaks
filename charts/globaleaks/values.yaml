@@ -58,8 +58,7 @@ ingress:
   enabled: true
   className: "alb"
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: globaleaks.ue2.mgt.aws.accrete.sh,
-      *.globaleaks.ue2.mgt.aws.accrete.sh
+    external-dns.alpha.kubernetes.io/hostname: globaleaks.ue2.mgt.aws.accrete.sh, *.globaleaks.ue2.mgt.aws.accrete.sh
     alb.ingress.kubernetes.io/group.name: platform
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
   hosts:
